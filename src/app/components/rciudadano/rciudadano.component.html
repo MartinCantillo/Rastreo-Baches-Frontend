@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">Formulario de registro</h2>
+      <form (ngSubmit)="submitForm()" #registrationForm="ngForm">
+        <div>
+          <label for="cedula">Cédula:</label>
+          <input type="text" id="cedula" name="cedula" [(ngModel)]="formData.cedula" required>
+        </div>
+  
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" [(ngModel)]="formData.nombre" required>
+        </div>
+  
+        <div>
+          <label for="direccion">Dirección:</label>
+          <input type="text" id="direccion" name="direccion" [(ngModel)]="formData.direccion" required>
+        </div>
+  
+        <div>
+          <label for="telefono">Teléfono:</label>
+          <input type="text" id="telefono" name="telefono" [(ngModel)]="formData.telefono" required>
+        </div>
+  
+        <div>
+          <label for="tipoRegistro">Tipo de Registro:</label>
+          <select id="tipoRegistro" name="tipoRegistro" [(ngModel)]="formData.tipoRegistro" required>
+            <option value="ciudadano">Ciudadano</option>
+            <option value="funcionario">Funcionario</option>
+          </select>
+        </div>
+  
+        <button type="submit" [disabled]="!registrationForm.form.valid">Registrar</button>
+      </form>
+    </div>
+  </div>
+  
