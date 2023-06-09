@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { user } from 'src/app/Models/User';
+import { LogginservicesService } from 'src/app/services/UserServices';
 
 @Component({
   selector: 'app-rciudadano',
@@ -6,6 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./rciudadano.component.css']
 })
 export class RCiudadanoComponent {
+  user: user = new user(); // Instancia de la clase user
   formData = {
     cedula: '',
     nombre: '',
@@ -13,9 +17,8 @@ export class RCiudadanoComponent {
     telefono: '',
     tipoRegistro: 'ciudadano'
   };
-
+  constructor(private router: Router) {}
   submitForm() {
-    // Aquí puedes realizar las acciones necesarias con los datos del formulario
-    console.log(this.formData);
+     // Mapear los datos del formulario al objeto user
   }
 }
