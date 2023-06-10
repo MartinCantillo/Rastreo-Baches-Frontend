@@ -18,8 +18,7 @@ export class RegisterLogginComponent implements OnInit {
   constructor(
     private router: Router,
     private LogginS: LogginservicesService,
-    private GeneratePk: GeneratePkUsersService,
-   
+    private GeneratePk: GeneratePkUsersService
   ) {}
 
   ngOnInit() {}
@@ -32,7 +31,7 @@ export class RegisterLogginComponent implements OnInit {
       this.User.username = this.email;
       this.User.password = this.password;
       this.User.rol = 1;
-      
+
       alert(this.User);
       this.LogginS.SaveUser(this.User).subscribe({
         next: (res) => this.redirect(),
