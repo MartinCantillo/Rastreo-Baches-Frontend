@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RCiudadanoComponent } from './components/rciudadano/rciudadano.component';
 import { RegisterLogginComponent } from './components/RegisterLoggin/RegisterLoggin.component';
+import { RciudadanoServicesService } from './services/RciudadanoServices.service';
 
 const appRoutes: Routes = [
   { path: 'loggin', component: LogginComponent },
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, LogginComponent, RCiudadanoComponent ,RegisterLogginComponent],
+  providers: [RciudadanoServicesService],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,8 +28,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     
+    
   ],
-  providers: [],
+ 
   bootstrap: [AppComponent],
 })
 export class AppModule {}
