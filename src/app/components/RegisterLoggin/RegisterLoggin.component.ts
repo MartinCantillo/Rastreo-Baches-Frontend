@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ciudadano } from 'src/app/Models/Ciudadano';
 import { user } from 'src/app/Models/User';
 import { GeneratePkUsersService } from 'src/app/services/GeneratePkUsers.service';
+import { GetPkCiudadanoService } from 'src/app/services/GetPkCiudadano.service';
 import { LogginservicesService } from 'src/app/services/UserServices';
 
 @Component({
@@ -10,6 +12,8 @@ import { LogginservicesService } from 'src/app/services/UserServices';
   styleUrls: ['./RegisterLoggin.component.css'],
 })
 export class RegisterLogginComponent implements OnInit {
+  ciudadano: ciudadano = new ciudadano();
+  usuario: string = '';
   User: user = new user();
   email: string = '';
   password: string = '';
@@ -18,7 +22,9 @@ export class RegisterLogginComponent implements OnInit {
   constructor(
     private router: Router,
     private LogginS: LogginservicesService,
-    private GeneratePk: GeneratePkUsersService
+    private GeneratePk: GeneratePkUsersService,
+    private route: ActivatedRoute,
+    private GetPkCiudadano: GetPkCiudadanoService
   ) {}
 
   ngOnInit() {}
@@ -31,7 +37,7 @@ export class RegisterLogginComponent implements OnInit {
       this.User.username = this.email;
       this.User.password = this.password;
       this.User.rol = 1;
-
+     
       alert(this.User);
       this.LogginS.SaveUser(this.User).subscribe({
         next: (res) => this.redirect(),
@@ -39,7 +45,13 @@ export class RegisterLogginComponent implements OnInit {
           console.log(error);
         },
       });
-      this.router.navigate(['/Registrarc']);
+      this.GetPkCiudadano.findById(this.User.username).subscribe({
+        next: (res) => console.log(res),
+        error: (error) => {
+          console.log(error);
+        },
+      });
+      //this.router.navigate(['/Registrarc']);
     } else if (this.isCiudadano && this.email !== '' && this.password !== '') {
       // Inicio de sesión como ciudadano
       alert('Inicio de sesión como ciudadano');
@@ -54,7 +66,14 @@ export class RegisterLogginComponent implements OnInit {
           console.log(error);
         },
       });
+       this.GetPkCiudadano.findById(this.User.username).subscribe({
+          next: (res) => console.log(res),
+          error: (error) => {
+            console.log(error);
+          },
+        });
       this.router.navigate(['/Registrarc']);
+
     } else {
       // No se seleccionó ningún tipo de usuario o no se ingresó el email y contraseña
       alert('Por favor, verifique los datos ingresados');

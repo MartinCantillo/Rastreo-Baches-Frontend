@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ciudadano } from 'src/app/Models/Ciudadano';
 import { funcionario } from 'src/app/Models/Funcionario';
 import { user } from 'src/app/Models/User';
 import { GeneratePkUsersService } from 'src/app/services/GeneratePkUsers.service';
+import { GetPkCiudadanoService } from 'src/app/services/GetPkCiudadano.service';
 import { RciudadanoServicesService } from 'src/app/services/RciudadanoServices.service';
 import { RegisterFuncionarioService } from 'src/app/services/RegisterFuncionario.service';
 import { LogginservicesService } from 'src/app/services/UserServices';
@@ -16,6 +17,7 @@ import { LogginservicesService } from 'src/app/services/UserServices';
 export class RCiudadanoComponent {
   ciudadano: ciudadano = new ciudadano(); // Instancia de la clase ciudadano
   funcionario: funcionario = new funcionario();
+
   formData: any = {
     cedula: '',
     nombre: '',
@@ -24,12 +26,14 @@ export class RCiudadanoComponent {
     tipoRegistro: '',
   };
   constructor(
-    private router: Router,
     private ciudadanoS: RciudadanoServicesService,
     private GeneratePk: GeneratePkUsersService,
-    private RFuncionario: RegisterFuncionarioService
-  ) {}
-
+    private RFuncionario: RegisterFuncionarioService,
+    private route: ActivatedRoute,
+    private GetPkCiudadano: GetPkCiudadanoService
+  ) {
+   
+  }
   submitForm() {
     if (this.formData.tipoRegistro === '1') {
       alert('Funcionario');

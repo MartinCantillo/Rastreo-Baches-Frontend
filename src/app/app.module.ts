@@ -42,6 +42,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
   ],
+  exports: [RouterModule],
 
   bootstrap: [AppComponent],
 })
