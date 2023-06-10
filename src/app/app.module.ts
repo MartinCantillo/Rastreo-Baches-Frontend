@@ -11,6 +11,8 @@ import { RCiudadanoComponent } from './components/rciudadano/rciudadano.componen
 import { RegisterLogginComponent } from './components/RegisterLoggin/RegisterLoggin.component';
 import { RciudadanoServicesService } from './services/RciudadanoServices.service';
 import { RegisterBachesComponent } from './components/RegisterBaches/RegisterBaches.component';
+import { RegisterFuncionarioService } from './services/RegisterFuncionario.service';
+import { RegisterBachesService } from './services/RegisterBaches.service';
 
 const appRoutes: Routes = [
   { path: 'loggin', component: LogginComponent },
@@ -27,7 +29,11 @@ const appRoutes: Routes = [
     RegisterLogginComponent,
     RegisterBachesComponent,
   ],
-  providers: [RciudadanoServicesService],
+  providers: [
+    RciudadanoServicesService,
+    RegisterFuncionarioService,
+    RegisterBachesService,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
