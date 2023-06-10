@@ -10,15 +10,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { RCiudadanoComponent } from './components/rciudadano/rciudadano.component';
 import { RegisterLogginComponent } from './components/RegisterLoggin/RegisterLoggin.component';
 import { RciudadanoServicesService } from './services/RciudadanoServices.service';
+import { RegisterBachesComponent } from './components/RegisterBaches/RegisterBaches.component';
 
 const appRoutes: Routes = [
   { path: 'loggin', component: LogginComponent },
   { path: 'Registrarc', component: RCiudadanoComponent },
   { path: 'Registrarl', component: RegisterLogginComponent },
+  { path: 'Registrarb', component: RegisterBachesComponent },
 ];
 
 @NgModule({
-  declarations: [AppComponent, LogginComponent, RCiudadanoComponent ,RegisterLogginComponent],
+  declarations: [
+    AppComponent,
+    LogginComponent,
+    RCiudadanoComponent,
+    RegisterLogginComponent,
+    RegisterBachesComponent,
+  ],
   providers: [RciudadanoServicesService],
   imports: [
     BrowserModule,
@@ -27,10 +35,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     ReactiveFormsModule,
-    
-    
   ],
- 
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}
