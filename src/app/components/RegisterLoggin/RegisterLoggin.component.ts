@@ -37,7 +37,7 @@ export class RegisterLogginComponent implements OnInit {
       this.User.username = this.email;
       this.User.password = this.password;
       this.User.rol = 1;
-     
+
       alert(this.User);
       this.LogginS.SaveUser(this.User).subscribe({
         next: (res) => this.redirect(),
@@ -45,7 +45,7 @@ export class RegisterLogginComponent implements OnInit {
           console.log(error);
         },
       });
-      this.GetPkCiudadano.findById(this.User.username).subscribe({
+      this.GetPkCiudadano.findById(this.User.id).subscribe({
         next: (res) => console.log(res),
         error: (error) => {
           console.log(error);
@@ -66,16 +66,14 @@ export class RegisterLogginComponent implements OnInit {
           console.log(error);
         },
       });
-       this.GetPkCiudadano.findById(this.User.username).subscribe({
-          next: (res) => console.log(res),
-          error: (error) => {
-            console.log(error);
-          },
-        });
+      this.GetPkCiudadano.findById(this.User.id).subscribe({
+        next: (res) => console.log(res),
+        error: (error) => {
+          console.log(error);
+        },
+      });
       this.router.navigate(['/Registrarc']);
-
     } else {
-      // No se seleccionó ningún tipo de usuario o no se ingresó el email y contraseña
       alert('Por favor, verifique los datos ingresados');
     }
   }

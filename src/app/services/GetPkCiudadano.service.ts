@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { ciudadano } from '../Models/Ciudadano';
 import { HttpClient } from '@angular/common/http';
-import { user } from '../Models/User';
-
+import { user } from '../Models/User';//
+//service failed
 @Injectable({
   providedIn: 'root',
 })
 export class GetPkCiudadanoService {
   pkKey: number = 0;
+  user: user = new user();
   private apiUrl: string = 'http://localhost:8023/user/find';
+  private apiUrlCi: string = 'http://localhost:8023/user/Getciudadano';
   constructor(private httpClient: HttpClient) {}
 
   getPrimaryKey(pk: number): number {
@@ -20,13 +22,13 @@ export class GetPkCiudadanoService {
   getpkKey(): number {
     return this.pkKey;
   }
-  getCiudadanoById() {
-    //me falta inyectar el servicio ara consultar a la bd y crear el backend obtener el id
-  }
-  //method to get id of the ciudadano
-  findById(usuario: string): Observable<user> {
-    const requestBody = { username: usuario };
-    return this.httpClient.post<user>(this.apiUrl, requestBody);
+  getCiudadanoById() {}
+  //method to get id of the users , me tocaria actualizar este metodo y ya no seria string sino el int y el id como tal del ciudadano
+  findById(id: number): Observable<Object> {
+    return this.httpClient.get<Object>(`${this.apiUrl}find/${id}`);
   }
 
+  findByIdCiudadano(userd: user): Observable<Object> {
+    return this.httpClient.post<user>(this.apiUrlCi, userd);
+  }
 }

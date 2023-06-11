@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ciudadano } from 'src/app/Models/Ciudadano';
 import { funcionario } from 'src/app/Models/Funcionario';
 import { user } from 'src/app/Models/User';
+import { GeneratePkCiudadanoService } from 'src/app/services/GeneratePkCiudadano.service';
 import { GeneratePkUsersService } from 'src/app/services/GeneratePkUsers.service';
 import { GetPkCiudadanoService } from 'src/app/services/GetPkCiudadano.service';
 import { RciudadanoServicesService } from 'src/app/services/RciudadanoServices.service';
@@ -30,10 +31,9 @@ export class RCiudadanoComponent {
     private GeneratePk: GeneratePkUsersService,
     private RFuncionario: RegisterFuncionarioService,
     private route: ActivatedRoute,
-    private GetPkCiudadano: GetPkCiudadanoService
-  ) {
-   
-  }
+    private router: Router,
+    private GeneratePkCiudadanoS: GeneratePkCiudadanoService
+  ) {}
   submitForm() {
     if (this.formData.tipoRegistro === '1') {
       alert('Funcionario');
@@ -47,19 +47,24 @@ export class RCiudadanoComponent {
           console.log(error);
         },
       });
+      this.router.navigate(['/Registrarb']);
     } else if (this.formData.tipoRegistro === '2') {
       alert('Ciudadano');
+      this.GeneratePkCiudadanoS.generatePrimaryKey();
+      this.ciudadano.idC = this.GeneratePkCiudadanoS.getParametro();
       this.ciudadano.user = this.GeneratePk.getParametro();
       this.ciudadano.cedulaC = this.formData.cedula;
       this.ciudadano.nombreC = this.formData.nombre;
       this.ciudadano.direccionC = this.formData.direccion;
       this.ciudadano.telefonoC = this.formData.telefono;
+
       this.ciudadanoS.SaveUser(this.ciudadano).subscribe({
         next: (res) => console.log(res),
         error: (error) => {
           console.log(error);
         },
       });
+      this.router.navigate(['/Registrarb']);
     }
   }
 }

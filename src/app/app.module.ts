@@ -13,6 +13,8 @@ import { RciudadanoServicesService } from './services/RciudadanoServices.service
 import { RegisterBachesComponent } from './components/RegisterBaches/RegisterBaches.component';
 import { RegisterFuncionarioService } from './services/RegisterFuncionario.service';
 import { RegisterBachesService } from './services/RegisterBaches.service';
+import { GeneratePkCiudadanoService } from './services/GeneratePkCiudadano.service';
+import { GeneratePkBachesService } from './services/GeneratePkBaches.service';
 
 const appRoutes: Routes = [
   { path: 'loggin', component: LogginComponent },
@@ -33,6 +35,8 @@ const appRoutes: Routes = [
     RciudadanoServicesService,
     RegisterFuncionarioService,
     RegisterBachesService,
+    GeneratePkCiudadanoService,
+    GeneratePkBachesService
   ],
   imports: [
     BrowserModule,
