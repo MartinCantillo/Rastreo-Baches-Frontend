@@ -3,13 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-RegisterAveria',
   templateUrl: './RegisterAveria.component.html',
-  styleUrls: ['./RegisterAveria.component.css']
+  styleUrls: ['./RegisterAveria.component.css'],
 })
 export class RegisterAveriaComponent implements OnInit {
+  tipoDeDano: string;
+  costo: number;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

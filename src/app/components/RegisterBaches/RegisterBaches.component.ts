@@ -48,7 +48,7 @@ export class RegisterBachesComponent implements OnInit {
     //this.GetBachesS.viu();
 
     this.RBaches.SaveUser(this.baches).subscribe({
-      next: (res) => this.router.navigate(['/tablabache']),
+      next: (res) => this.router.navigate(['/loggin']),
       error: (error) => {
         console.log(error);
       },
