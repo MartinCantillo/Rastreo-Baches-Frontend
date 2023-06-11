@@ -22,10 +22,15 @@
         <td>{{ bachess.ubicacionB }}</td>
         <td>{{ bachess.urgencia }}</td>
         <td>
-          <button type="button" class="btn btn-dark" style="margin-right: 50px">
-            Averica
+          <button
+            type="button"
+            class="btn btn-dark"
+            (click)="Averia()"
+            style="margin-right: 50px"
+          >
+            Averia
           </button>
-          <button type="button" class="btn btn-danger">Eliminar</button>
+          <!---  <button type="button" class="btn btn-danger">Eliminar</button>-->
         </td>
         <!--- <td th:text="${Estudiante.programa}">Programa</td>-->
       </tr>
