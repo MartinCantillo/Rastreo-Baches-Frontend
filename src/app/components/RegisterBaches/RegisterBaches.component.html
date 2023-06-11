@@ -1,13 +1,43 @@
 <div class="baches">
   <form class="custom-form" (ngSubmit)="submitForm()">
     <h1>Baches</h1>
-    <input type="text" name="direccion" placeholder="Direccion" required [(ngModel)]="formData.direccion" />
-    <input type="text" name="tamaño" placeholder="Tamaño" required [(ngModel)]="formData.tamano" />
-    <input type="text" name="ubicacion" placeholder="Ubicacion" required [(ngModel)]="formData.ubicacion" />
-    <input type="text" name="distrito" placeholder="Distrito" required [(ngModel)]="formData.distrito" />
-    <input type="text" name="urgencia" placeholder="Urgencia" required [(ngModel)]="formData.urgencia" />
+    <input
+      type="text"
+      name="direccion"
+      placeholder="Direccion"
+      required
+      [(ngModel)]="formData.direccion"
+    />
+    <input
+      type="text"
+      name="tamaño"
+      placeholder="Tamaño"
+      required
+      [(ngModel)]="formData.tamano"
+    />
+    <input
+      type="text"
+      name="ubicacion"
+      placeholder="Ubicacion"
+      required
+      [(ngModel)]="formData.ubicacion"
+    />
+    <input
+      type="text"
+      name="distrito"
+      placeholder="Distrito"
+      required
+      [(ngModel)]="formData.distrito"
+    />
+    <input
+      type="text"
+      name="urgencia"
+      placeholder="Urgencia"
+      required
+      [(ngModel)]="formData.urgencia"
+    />
 
     <button type="submit">Log in</button>
-    <p>¿Quieres ver el estado del bache? <a href="/Registrarl">Ver</a></p>
+    <p>¿Quieres registrar una averia ? <a href="/Registrarl">Ver</a></p>
   </form>
 </div>

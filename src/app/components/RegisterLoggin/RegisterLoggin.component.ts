@@ -37,6 +37,7 @@ export class RegisterLogginComponent implements OnInit {
       this.User.username = this.email;
       this.User.password = this.password;
       this.User.rol = 1;
+      this.User.id=this.GeneratePk.getParametro();
 
       alert(this.User);
       this.LogginS.SaveUser(this.User).subscribe({
@@ -45,12 +46,7 @@ export class RegisterLogginComponent implements OnInit {
           console.log(error);
         },
       });
-      this.GetPkCiudadano.findById(this.User.id).subscribe({
-        next: (res) => console.log(res),
-        error: (error) => {
-          console.log(error);
-        },
-      });
+    
       //this.router.navigate(['/Registrarc']);
     } else if (this.isCiudadano && this.email !== '' && this.password !== '') {
       // Inicio de sesión como ciudadano
@@ -59,6 +55,7 @@ export class RegisterLogginComponent implements OnInit {
       this.User.username = this.email;
       this.User.password = this.password;
       this.User.rol = 2;
+      this.User.id=this.GeneratePk.getParametro();
       alert(this.User.username);
       this.LogginS.SaveUser(this.User).subscribe({
         next: (res) => this.redirect(),
@@ -66,12 +63,7 @@ export class RegisterLogginComponent implements OnInit {
           console.log(error);
         },
       });
-      this.GetPkCiudadano.findById(this.User.id).subscribe({
-        next: (res) => console.log(res),
-        error: (error) => {
-          console.log(error);
-        },
-      });
+    
       this.router.navigate(['/Registrarc']);
     } else {
       alert('Por favor, verifique los datos ingresados');

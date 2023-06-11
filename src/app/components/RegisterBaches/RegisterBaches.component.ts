@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { baches } from 'src/app/Models/Baches';
+import { ciudadano } from 'src/app/Models/Ciudadano';
 import { GeneratePkBachesService } from 'src/app/services/GeneratePkBaches.service';
 import { GeneratePkCiudadanoService } from 'src/app/services/GeneratePkCiudadano.service';
+import { GetBachesService } from 'src/app/services/GetBaches.service';
 import { RegisterBachesService } from 'src/app/services/RegisterBaches.service';
+import { TableBachesComponent } from '../TableBaches/TableBaches.component';
 
 @Component({
   selector: 'app-RegisterBaches',
@@ -12,11 +15,13 @@ import { RegisterBachesService } from 'src/app/services/RegisterBaches.service';
 })
 export class RegisterBachesComponent implements OnInit {
   baches: baches = new baches();
+  ciudadanos: ciudadano = new ciudadano();
   constructor(
     private RBaches: RegisterBachesService,
     private router: Router,
     private GeneratePkBachesS: GeneratePkBachesService,
-    private GeneratePkCiudadanoS: GeneratePkCiudadanoService
+    private GeneratePkCiudadanoS: GeneratePkCiudadanoService,
+    private GetBachesS: GetBachesService
   ) {}
 
   ngOnInit() {}
@@ -31,16 +36,22 @@ export class RegisterBachesComponent implements OnInit {
     this.baches.idB = this.GeneratePkBachesS.generatePrimaryKey();
     this.baches.idB = this.GeneratePkBachesS.getParametro();
     this.baches.direccionB = this.formData.direccion;
-    this.baches.tamaño = this.formData.tamano;
+    this.baches.tamano = this.formData.tamano;
     this.baches.ubicacionB = this.formData.ubicacion;
     this.baches.distrito = this.formData.distrito;
     this.baches.urgencia = this.formData.urgencia;
     this.baches.ciudadano = this.GeneratePkCiudadanoS.getParametro();
+    //creo primero el ciudadano solo con el id
+    this.ciudadanos.idC = this.baches.ciudadano;
+    //ahora incializo el servicio
+    this.GetBachesS.ciudadano=this.ciudadanos;
+  
     this.RBaches.SaveUser(this.baches).subscribe({
-      next: (res) => console.log(res),
+      next: (res) => this.router.navigate(['/tablabache']),
       error: (error) => {
         console.log(error);
       },
     });
   }
+  
 }
