@@ -44,8 +44,9 @@ export class RegisterBachesComponent implements OnInit {
     //creo primero el ciudadano solo con el id
     this.ciudadanos.idC = this.baches.ciudadano;
     //ahora incializo el servicio
-    this.GetBachesS.ciudadano=this.ciudadanos;
-  
+    this.GetBachesS.ciudadano = this.ciudadanos;
+    //this.GetBachesS.viu();
+
     this.RBaches.SaveUser(this.baches).subscribe({
       next: (res) => this.router.navigate(['/tablabache']),
       error: (error) => {
@@ -53,5 +54,4 @@ export class RegisterBachesComponent implements OnInit {
       },
     });
   }
-  
 }
