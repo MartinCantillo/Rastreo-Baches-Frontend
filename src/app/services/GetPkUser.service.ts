@@ -7,7 +7,8 @@ import { user } from '../Models/User';
   providedIn: 'root',
 })
 export class GetPkUserService {
-  username: string=""
+  username: string = '';
+  username2:string = 'no modi';
   private baseUrl = 'http://localhost:8023/user/finduser';
 
   constructor(private http: HttpClient) {}

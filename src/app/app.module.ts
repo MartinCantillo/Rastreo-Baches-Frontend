@@ -36,6 +36,7 @@ const appRoutes: Routes = [
     RegisterBachesComponent,
     TableBachesComponent,
     RegisterAveriaComponent,
+    
   ],
   providers: [
     RciudadanoServicesService,
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     RegisterBachesService,
     GeneratePkCiudadanoService,
     GeneratePkBachesService,
+
   ],
   imports: [
     BrowserModule,

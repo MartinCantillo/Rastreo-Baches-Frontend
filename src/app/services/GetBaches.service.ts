@@ -22,7 +22,7 @@ export class GetBachesService {
     return this.httpClient.post<baches>(`${this.apiUrl}`, ciudadano);
   }
   //method to get pk of ciudadano me toca buscar en que servicio fue que obtuve el usuario por su username
-  //inyecto este servicio en el loggin
+  //inyecto este servicio en el loggo
   getCiudadanoByUserId(userId: number): Observable<ciudadano> {
     const url = `${this.apiUrlC}`;
     return this.httpClient.post<ciudadano>(url, { id: userId });
