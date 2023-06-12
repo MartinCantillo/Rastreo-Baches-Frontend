@@ -8,6 +8,7 @@ import { GeneratePkUsersService } from 'src/app/services/GeneratePkUsers.service
 import { GetPkCiudadanoService } from 'src/app/services/GetPkCiudadano.service';
 import { RciudadanoServicesService } from 'src/app/services/RciudadanoServices.service';
 import { RegisterFuncionarioService } from 'src/app/services/RegisterFuncionario.service';
+import { RegisterFuncionarioServiceService } from 'src/app/services/RegisterFuncionarioService.service';
 import { LogginservicesService } from 'src/app/services/UserServices';
 
 @Component({
@@ -29,7 +30,7 @@ export class RCiudadanoComponent {
   constructor(
     private ciudadanoS: RciudadanoServicesService,
     private GeneratePk: GeneratePkUsersService,
-    private RFuncionario: RegisterFuncionarioService,
+    private RFuncionario: RegisterFuncionarioServiceService,
     private route: ActivatedRoute,
     private router: Router,
     private GeneratePkCiudadanoS: GeneratePkCiudadanoService
@@ -64,7 +65,7 @@ export class RCiudadanoComponent {
           console.log(error);
         },
       });
-      this.router.navigate(['/Registrarb']);
+      this.router.navigate(['/loggin']);
     }
   }
 }

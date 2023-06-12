@@ -6,6 +6,7 @@ import { user } from 'src/app/Models/User';
 import { GetBachesService } from 'src/app/services/GetBaches.service';
 import { GetPkUserService } from 'src/app/services/GetPkUser.service';
 import { ActivatedRoute } from '@angular/router';
+import { RegisterAveriaService } from 'src/app/services/RegisterAveria.service';
 @Component({
   selector: 'app-TableBaches',
   templateUrl: './TableBaches.component.html',
@@ -23,14 +24,16 @@ export class TableBachesComponent implements OnInit {
     private GetBachesS: GetBachesService,
     private router: Router,
     private GetPkUserServ: GetPkUserService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private RegisterAveriaS : RegisterAveriaService
   ) {
+    this.getbachesById();
   }
 
   ngOnInit() {
 
     //alert('email desde el tercero' + this.GetPkUserServ.username);
-    this.getbachesById();
+    
   }
 
   //Aqui inyecto el servicio para obtener el id del usuario enviandole como parametro el username
@@ -58,6 +61,7 @@ export class TableBachesComponent implements OnInit {
       (userData) => {
         //Get the ciudadano
         this.ciudadano2 = userData;
+        this.RegisterAveriaS.codigoCiudadano=userData.idC;
        //alert('Respuesta del servidor' + userData);
         this.getbachess();
       }
@@ -73,6 +77,8 @@ export class TableBachesComponent implements OnInit {
     this.GetBachesS.findBacheByCiudadano(this.ciudadano2).subscribe(
       (userData) => {
         this.bachess = userData;
+        //Get pk of bache
+        this.RegisterAveriaS.codigoBache= userData.idB;
       }
     );
   }

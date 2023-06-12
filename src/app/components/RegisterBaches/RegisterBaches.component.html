@@ -4,7 +4,7 @@
     <input
       type="text"
       name="direccion"
-      placeholder="Direccion"
+      placeholder="Dirección"
       required
       [(ngModel)]="formData.direccion"
     />
@@ -18,7 +18,7 @@
     <input
       type="text"
       name="ubicacion"
-      placeholder="Ubicacion"
+      placeholder="Ubicación"
       required
       [(ngModel)]="formData.ubicacion"
     />
@@ -37,9 +37,8 @@
       [(ngModel)]="formData.urgencia"
     />
 
-    <button type="submit">Log in</button>
+    <button type="submit">Registrar</button>
     <br>
-      <button type="submit" (click)="ir()">Averia</button> >
-    
+    <button type="submit"  class="custom-button" (click)="ir()">Consultar</button> 
   </form>
 </div>

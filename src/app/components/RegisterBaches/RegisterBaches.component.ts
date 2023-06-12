@@ -10,6 +10,7 @@ import { TableBachesComponent } from '../TableBaches/TableBaches.component';
 import { GetPkUserService } from 'src/app/services/GetPkUser.service';
 import { GetPkCiudadanoService } from 'src/app/services/GetPkCiudadano.service';
 import { user } from 'src/app/Models/User';
+import { RegisterAveriaService } from 'src/app/services/RegisterAveria.service';
 
 @Component({
   selector: 'app-RegisterBaches',
@@ -30,6 +31,7 @@ export class RegisterBachesComponent implements OnInit {
     private GetBachesS: GetBachesService,
     private GetPkUserServ: GetPkUserService,
     private GetPkCiudadanoS :GetPkCiudadanoService,
+    
   ) {
     
   }
@@ -58,6 +60,15 @@ export class RegisterBachesComponent implements OnInit {
     
     });
     */
+    if (
+      this.formData.direccion === '' ||
+      this.formData.tamano === '' ||
+      this.formData.ubicacion === '' ||
+      this.formData.distrito === '' ||
+      this.formData.urgencia === ''
+    ) {alert('Por favor, complete todos los campos del formulario');
+    return; // Detener el envío del formulario si hay campos vacíos
+  }
  alert("ciudadano enviado  en getciudadanoyid"+this.RBaches.idCiudadno)
     //find the pk of the ciudadano
     this.GetBachesS.getCiudadanoByUserId(this.RBaches.idCiudadno).subscribe(
@@ -68,6 +79,7 @@ export class RegisterBachesComponent implements OnInit {
       // alert('Respuesta del servidor dentro de use data' + userData.nombreC);
       this.baches.idB = this.GeneratePkBachesS.generatePrimaryKey();
       this.baches.idB = this.GeneratePkBachesS.getParametro();
+      
       this.baches.direccionB = this.formData.direccion;
       this.baches.tamano = this.formData.tamano;
       this.baches.ubicacionB = this.formData.ubicacion;

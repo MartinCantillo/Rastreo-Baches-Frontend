@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { GetBachesService } from 'src/app/services/GetBaches.service';
 import { GetPkUserService } from 'src/app/services/GetPkUser.service';
 import { RegisterBachesService } from 'src/app/services/RegisterBaches.service';
+import { RegisterFuncionarioServiceService } from 'src/app/services/RegisterFuncionarioService.service';
 import { LogginservicesService } from 'src/app/services/UserServices';
 @Component({
   selector: 'app-loggin',
@@ -20,19 +21,39 @@ export class LogginComponent {
     private router: Router,
     private GetPkUserServ: GetPkUserService,
     private GetBachesServ: GetBachesService,
-    private RegisterBachesSer :RegisterBachesService
-  
+    private RegisterBachesSer :RegisterBachesService,
+   private RegisterFuncionarioSer :RegisterFuncionarioServiceService
   ) {}
 
   login() {
     if (this.isAdmin && this.email !== '' && this.password !== '') {
-      // Inicio de sesión como Funcionario
+
       alert('Inicio de sesión como Funcionario');
       this.GetBachesServ.user.username = this.email;
       this.GetPkUserServ.username = this.email;
-    //  alert("VAlor del email "+this.GetPkUserServ.username)
+      
+      this.GetPkUserServ.getpkUser(this.email).subscribe({
+        //get id of the user
+        next: (res) => {
+          console.log(res);
+          //alert('id obtenido1 ' +res.id)
+          if (Object.keys(res).length !== 0) {
+            if (this.password == res.password) {
+             this.RegisterBachesSer.idCiudadno=res.id;
+              this.router.navigate(['/Registrarb']);
+            } else {
+              alert('Contraseña incorrecta');
+            }
+          }
+          //verifico que el password sea igual al que me extraiga el servidor
+        },
+        error: (error) => {
+          console.log(error);
+          alert('Usuario no registrado');
+        },
+      });
 
-      //para pasarle el username al componente de table
+
       
     } else if (this.isCiudadano && this.email !== '' && this.password !== '') {
       // Inicio de sesión como ciudadano

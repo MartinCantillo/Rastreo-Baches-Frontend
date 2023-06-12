@@ -11,12 +11,13 @@ import { RCiudadanoComponent } from './components/rciudadano/rciudadano.componen
 import { RegisterLogginComponent } from './components/RegisterLoggin/RegisterLoggin.component';
 import { RciudadanoServicesService } from './services/RciudadanoServices.service';
 import { RegisterBachesComponent } from './components/RegisterBaches/RegisterBaches.component';
-import { RegisterFuncionarioService } from './services/RegisterFuncionario.service';
+
 import { RegisterBachesService } from './services/RegisterBaches.service';
 import { GeneratePkCiudadanoService } from './services/GeneratePkCiudadano.service';
 import { GeneratePkBachesService } from './services/GeneratePkBaches.service';
 import { TableBachesComponent } from './components/TableBaches/TableBaches.component';
 import { RegisterAveriaComponent } from './components/RegisterAveria/RegisterAveria.component';
+import { RegisterFuncionarioServiceService } from './services/RegisterFuncionarioService.service';
 
 const appRoutes: Routes = [
   { path: 'loggin', component: LogginComponent },
@@ -40,11 +41,10 @@ const appRoutes: Routes = [
   ],
   providers: [
     RciudadanoServicesService,
-    RegisterFuncionarioService,
     RegisterBachesService,
     GeneratePkCiudadanoService,
     GeneratePkBachesService,
-
+    RegisterFuncionarioServiceService,
   ],
   imports: [
     BrowserModule,
