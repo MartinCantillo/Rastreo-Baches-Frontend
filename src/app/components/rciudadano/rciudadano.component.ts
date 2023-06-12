@@ -7,7 +7,6 @@ import { GeneratePkCiudadanoService } from 'src/app/services/GeneratePkCiudadano
 import { GeneratePkUsersService } from 'src/app/services/GeneratePkUsers.service';
 import { GetPkCiudadanoService } from 'src/app/services/GetPkCiudadano.service';
 import { RciudadanoServicesService } from 'src/app/services/RciudadanoServices.service';
-import { RegisterFuncionarioService } from 'src/app/services/RegisterFuncionario.service';
 import { RegisterFuncionarioServiceService } from 'src/app/services/RegisterFuncionarioService.service';
 import { LogginservicesService } from 'src/app/services/UserServices';
 
@@ -42,7 +41,7 @@ export class RCiudadanoComponent {
       this.funcionario.cedulaF = this.formData.cedula;
       this.funcionario.nombreF = this.formData.nombre;
       this.funcionario.telefonoF = this.formData.telefono;
-      this.RFuncionario.SaveUser(this.funcionario).subscribe({
+      this.RFuncionario.SaveFuncionarios(this.funcionario).subscribe({
         next: (res) => console.log(res),
         error: (error) => {
           console.log(error);

@@ -13,36 +13,36 @@ import { LogginservicesService } from 'src/app/services/UserServices';
 export class LogginComponent {
   email: string = '';
   password: string = '';
-  isAdmin: boolean = false;
-  isCiudadano: boolean = false;
+  isAdmin: boolean ;
+  isCiudadano: boolean ;
   idU: number;
 
   constructor(
     private router: Router,
     private GetPkUserServ: GetPkUserService,
     private GetBachesServ: GetBachesService,
-    private RegisterBachesSer :RegisterBachesService,
-   private RegisterFuncionarioSer :RegisterFuncionarioServiceService
+    private RegisterBachesSer: RegisterBachesService,
+    private RegisterFuncionarioSer: RegisterFuncionarioServiceService
   ) {}
 
   login() {
     if (this.isAdmin && this.email !== '' && this.password !== '') {
-
       alert('Inicio de sesión como Funcionario');
       this.GetBachesServ.user.username = this.email;
       this.GetPkUserServ.username = this.email;
-      
+
       this.GetPkUserServ.getpkUser(this.email).subscribe({
         //get id of the user
         next: (res) => {
-          console.log(res);
+
           //alert('id obtenido1 ' +res.id)
-          if (Object.keys(res).length !== 0) {
-            if (this.password == res.password) {
-             this.RegisterBachesSer.idCiudadno=res.id;
+          if (Object.keys(res).length !== 0) {           
+            if (this.password == res.password && res.rol.id === 1) {
+              this.RegisterBachesSer.idCiudadno = res.id;
+              this.RegisterFuncionarioSer.idUser = res.id;
               this.router.navigate(['/Registrarb']);
             } else {
-              alert('Contraseña incorrecta');
+              alert('Por favor verifica');
             }
           }
           //verifico que el password sea igual al que me extraiga el servidor
@@ -52,30 +52,28 @@ export class LogginComponent {
           alert('Usuario no registrado');
         },
       });
-
-
-      
     } else if (this.isCiudadano && this.email !== '' && this.password !== '') {
       // Inicio de sesión como ciudadano
       //consulto en la bd para verificar que el usuario este registrado
-      
+
       this.GetPkUserServ.username = this.email;
       //this.GetBachesServ.user.username = this.email;
       alert('Inicio de sesión como ciudadano ');
       //hago a consulta para obtener el pk de user
       // alert('usuario enviado ' + this.email);
-      
+
       this.GetPkUserServ.getpkUser(this.email).subscribe({
         //get id of the user
         next: (res) => {
-          console.log(res);
+          
           //alert('id obtenido1 ' +res.id)
           if (Object.keys(res).length !== 0) {
-            if (this.password == res.password) {
-             this.RegisterBachesSer.idCiudadno=res.id;
+            console.log("respuesta de rol en ciudadano" +res);   
+            if (this.password == res.password && res.rol.id === 2) {
+              this.RegisterBachesSer.idCiudadno = res.id;
               this.router.navigate(['/Registrarb']);
             } else {
-              alert('Contraseña incorrecta');
+              alert('Por favor verifica');
             }
           }
           //verifico que el password sea igual al que me extraiga el servidor
@@ -91,6 +89,4 @@ export class LogginComponent {
       alert('Por favor, verifique los datos ingresados');
     }
   }
-
-  
 }

@@ -14,10 +14,10 @@ export class GetPkUserService {
   constructor(private http: HttpClient) {}
 
   //method to get pk of each user
-  getpkUser(username: string): Observable<user> {
+  getpkUser(username: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = { username: username };
 
-    return this.http.post<user>(`${this.baseUrl}`, body, { headers });
+    return this.http.post<any>(`${this.baseUrl}`, body, { headers });
   }
 }
