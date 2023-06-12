@@ -41,13 +41,18 @@ export class RCiudadanoComponent {
       this.funcionario.cedulaF = this.formData.cedula;
       this.funcionario.nombreF = this.formData.nombre;
       this.funcionario.telefonoF = this.formData.telefono;
+      this.funcionario.idF = this.RFuncionario.generatePrimaryKey();
+      this.funcionario.idF = this.RFuncionario.getParametro();
       this.RFuncionario.SaveFuncionarios(this.funcionario).subscribe({
-        next: (res) => console.log(res),
+        next: (res) => (
+          console.log(res),
+          this.router.navigate(['/loggin']),
+          alert('Registro con exito')
+        ),
         error: (error) => {
           console.log(error);
         },
       });
-      this.router.navigate(['/Registrarb']);
     } else if (this.formData.tipoRegistro === '2') {
       alert('Ciudadano');
       this.GeneratePkCiudadanoS.generatePrimaryKey();
@@ -59,12 +64,15 @@ export class RCiudadanoComponent {
       this.ciudadano.telefonoC = this.formData.telefono;
 
       this.ciudadanoS.SaveUser(this.ciudadano).subscribe({
-        next: (res) => console.log(res),
+        next: (res) => (
+          console.log(res),
+          this.router.navigate(['/loggin']),
+          alert('Registro con exito')
+        ),
         error: (error) => {
           console.log(error);
         },
       });
-      this.router.navigate(['/loggin']);
     }
   }
 }

@@ -4,6 +4,7 @@ import { ciudadano } from 'src/app/Models/Ciudadano';
 import { user } from 'src/app/Models/User';
 import { GeneratePkUsersService } from 'src/app/services/GeneratePkUsers.service';
 import { GetPkCiudadanoService } from 'src/app/services/GetPkCiudadano.service';
+import { RegisterFuncionarioServiceService } from 'src/app/services/RegisterFuncionarioService.service';
 import { LogginservicesService } from 'src/app/services/UserServices';
 
 @Component({
@@ -24,7 +25,8 @@ export class RegisterLogginComponent implements OnInit {
     private LogginS: LogginservicesService,
     private GeneratePk: GeneratePkUsersService,
     private route: ActivatedRoute,
-    private GetPkCiudadano: GetPkCiudadanoService
+    private GetPkCiudadano: GetPkCiudadanoService,
+    private RegisterFuncionarioSer: RegisterFuncionarioServiceService
   ) {}
 
   ngOnInit() {}
@@ -41,11 +43,13 @@ export class RegisterLogginComponent implements OnInit {
 
       alert(this.User);
       this.LogginS.SaveUser(this.User).subscribe({
-        next: (res) => this.redirect(),
+        next: (res) =>  this.router.navigate(['/Registrarc']),
         error: (error) => {
           console.log(error);
+          alert('Error'+error);
         },
       });
+     
     
       //this.router.navigate(['/Registrarc']);
     } else if (this.isCiudadano && this.email !== '' && this.password !== '') {
@@ -58,13 +62,14 @@ export class RegisterLogginComponent implements OnInit {
       this.User.id=this.GeneratePk.getParametro();
       alert(this.User.username);
       this.LogginS.SaveUser(this.User).subscribe({
-        next: (res) => this.redirect(),
+        next: (res) => this.router.navigate(['/Registrarc']),
         error: (error) => {
           console.log(error);
+          alert('Error'+error);
         },
       });
     
-      this.router.navigate(['/Registrarc']);
+      
     } else {
       alert('Por favor, verifique los datos ingresados');
     }

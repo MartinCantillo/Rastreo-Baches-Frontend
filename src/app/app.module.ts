@@ -20,6 +20,9 @@ import { RegisterAveriaComponent } from './components/RegisterAveria/RegisterAve
 import { RegisterFuncionarioServiceService } from './services/RegisterFuncionarioService.service';
 import { TableAllBachesComponent } from './components/TableAllBaches/TableAllBaches.component';
 import { GetAllBachesServiceService } from './services/GetAllBachesService.service';
+import { RegisterPersonalComponent } from './components/registerPersonal/registerPersonal.component';
+import { RegisterOrdenComponent } from './components/RegisterOrden/RegisterOrden.component';
+import { RegisterOrdenServiceService } from './services/RegisterOrdenService.service';
 
 const appRoutes: Routes = [
   { path: 'loggin', component: LogginComponent },
@@ -29,6 +32,8 @@ const appRoutes: Routes = [
   { path: 'tablabache', component: TableBachesComponent },
   { path: 'Registrara', component: RegisterAveriaComponent },
   { path: 'GetBaches', component: TableAllBachesComponent },
+  { path: 'Resgistrarp', component: RegisterPersonalComponent },
+  { path: 'Resgistraro', component: RegisterOrdenComponent },
 ];
 
 @NgModule({
@@ -41,6 +46,8 @@ const appRoutes: Routes = [
     TableBachesComponent,
     RegisterAveriaComponent,
     TableAllBachesComponent,
+    RegisterPersonalComponent,
+    RegisterOrdenComponent,
   ],
   providers: [
     RciudadanoServicesService,
@@ -49,6 +56,7 @@ const appRoutes: Routes = [
     GeneratePkBachesService,
     RegisterFuncionarioServiceService,
     GetAllBachesServiceService,
+    RegisterOrdenServiceService,
   ],
   imports: [
     BrowserModule,
