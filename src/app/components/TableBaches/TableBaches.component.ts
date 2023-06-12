@@ -19,21 +19,20 @@ export class TableBachesComponent implements OnInit {
   user: user = new user();
   idU: number = 0;
   email: string;
+  bachessList: baches[] = [];
 
   constructor(
     private GetBachesS: GetBachesService,
     private router: Router,
     private GetPkUserServ: GetPkUserService,
     private route: ActivatedRoute,
-    private RegisterAveriaS : RegisterAveriaService
+    private RegisterAveriaS: RegisterAveriaService
   ) {
     this.getbachesById();
   }
 
   ngOnInit() {
-
     //alert('email desde el tercero' + this.GetPkUserServ.username);
-    
   }
 
   //Aqui inyecto el servicio para obtener el id del usuario enviandole como parametro el username
@@ -46,7 +45,7 @@ export class TableBachesComponent implements OnInit {
       //get the pk of user
       this.idU = userData.id;
       this.ciudadano.idC = this.idU;
-     // alert('ciuddano  pk ' + userData.id);
+      // alert('ciuddano  pk ' + userData.id);
       // this.GetBachesS.IdCiudadano = this.idU;
       this.getbachessByCiudadano();
     });
@@ -56,13 +55,13 @@ export class TableBachesComponent implements OnInit {
     //voy a obtener el id del ciudadano en el mismo servicio donde consylto el bache por ciudadano
     // alert('valor de ciudadno enviado desde table' + this.ciudadano.idC);
     //alert("user data en el metodo getbachesbyciudanos")
- //   alert('this.ciudadano2 enviado al servidor' + this.ciudadano.idC);
+    //   alert('this.ciudadano2 enviado al servidor' + this.ciudadano.idC);
     this.GetBachesS.getCiudadanoByUserId(this.ciudadano.idC).subscribe(
       (userData) => {
         //Get the ciudadano
         this.ciudadano2 = userData;
-        this.RegisterAveriaS.codigoCiudadano=userData.idC;
-       //alert('Respuesta del servidor' + userData);
+        this.RegisterAveriaS.codigoCiudadano = userData.idC;
+        //alert('Respuesta del servidor' + userData);
         this.getbachess();
       }
     );
@@ -76,9 +75,11 @@ export class TableBachesComponent implements OnInit {
     // alert('valor de ciudadno enviado desde table' + this.ciudadano.idC);
     this.GetBachesS.findBacheByCiudadano(this.ciudadano2).subscribe(
       (userData) => {
-        this.bachess = userData;
+        this.bachessList = userData;
         //Get pk of bache
-        this.RegisterAveriaS.codigoBache= userData.idB;
+        if (userData.length > 0) {
+          this.RegisterAveriaS.codigoBache = userData[0].idB;
+        }
       }
     );
   }

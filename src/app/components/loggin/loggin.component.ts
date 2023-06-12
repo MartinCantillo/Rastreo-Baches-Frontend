@@ -13,8 +13,8 @@ import { LogginservicesService } from 'src/app/services/UserServices';
 export class LogginComponent {
   email: string = '';
   password: string = '';
-  isAdmin: boolean ;
-  isCiudadano: boolean ;
+  isAdmin: boolean;
+  isCiudadano: boolean;
   idU: number;
 
   constructor(
@@ -34,13 +34,12 @@ export class LogginComponent {
       this.GetPkUserServ.getpkUser(this.email).subscribe({
         //get id of the user
         next: (res) => {
-
           //alert('id obtenido1 ' +res.id)
-          if (Object.keys(res).length !== 0) {           
+          if (Object.keys(res).length !== 0) {
             if (this.password == res.password && res.rol.id === 1) {
               this.RegisterBachesSer.idCiudadno = res.id;
               this.RegisterFuncionarioSer.idUser = res.id;
-              this.router.navigate(['/Registrarb']);
+              this.router.navigate(['/GetBaches']);
             } else {
               alert('Por favor verifica');
             }
@@ -65,10 +64,9 @@ export class LogginComponent {
       this.GetPkUserServ.getpkUser(this.email).subscribe({
         //get id of the user
         next: (res) => {
-          
           //alert('id obtenido1 ' +res.id)
           if (Object.keys(res).length !== 0) {
-            console.log("respuesta de rol en ciudadano" +res);   
+            console.log('respuesta de rol en ciudadano' + res);
             if (this.password == res.password && res.rol.id === 2) {
               this.RegisterBachesSer.idCiudadno = res.id;
               this.router.navigate(['/Registrarb']);

@@ -18,8 +18,8 @@ export class GetBachesService {
   constructor(private httpClient: HttpClient) {}
 
   //method to get baches of ciudadano , este es el que habia creado viejo
-  findBacheByCiudadano(ciudadano: ciudadano): Observable<baches> {
-    return this.httpClient.post<baches>(`${this.apiUrl}`, ciudadano);
+  findBacheByCiudadano(ciudadano: ciudadano): Observable<baches[]> {
+    return this.httpClient.post<baches[]>(`${this.apiUrl}`, ciudadano);
   }
   //method to get pk of ciudadano me toca buscar en que servicio fue que obtuve el usuario por su username
   //inyecto este servicio en el loggo
