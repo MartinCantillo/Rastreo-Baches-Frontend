@@ -23,6 +23,7 @@ import { GetAllBachesServiceService } from './services/GetAllBachesService.servi
 import { RegisterPersonalComponent } from './components/registerPersonal/registerPersonal.component';
 import { RegisterOrdenComponent } from './components/RegisterOrden/RegisterOrden.component';
 import { RegisterOrdenServiceService } from './services/RegisterOrdenService.service';
+import { RegisterPersonalServiceService } from './services/RegisterPersonalService.service';
 
 const appRoutes: Routes = [
   { path: 'loggin', component: LogginComponent },
@@ -58,6 +59,7 @@ const appRoutes: Routes = [
     RegisterFuncionarioServiceService,
     GetAllBachesServiceService,
     RegisterOrdenServiceService,
+    RegisterPersonalServiceService
     
   ],
   imports: [

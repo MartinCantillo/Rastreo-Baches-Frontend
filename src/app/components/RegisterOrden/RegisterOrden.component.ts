@@ -30,15 +30,13 @@ export class RegisterOrdenComponent implements OnInit {
   ngOnInit() {}
   registrar() {
     this.ordens.idO = this.RegisterOrdenS.generatePrimaryKey();
-    this.ordens.idO = this.RegisterOrdenS.generatePrimaryKey();
+    this.ordens.idO = this.RegisterOrdenS.getParametro();
     this.ordens.estados = this.estado;
     this.ordens.horas = this.horas;
     this.ordens.materiales = this.materiales;
     this.ordens.precio = this.precio;
+    //get pk of orden
     this.RegisterPersonalS.ordenId = this.ordens.idO;
-    //alert('codigo del bache desde la orden' + this.ordens.bache);
-    //quede por aqui , ahora me falta buscar el id del funcionario para agregar la orden , tambien despues de aqui pasa
-    //a registrar el personal
     //pk of the  user as funcionario
     this.users.id = this.RegisterOrdenS.usuarioId;
     // alert('funcionario id enviado ' + this.users.id);
@@ -47,6 +45,7 @@ export class RegisterOrdenComponent implements OnInit {
       (userData) => {
         this.pkF = userData.idF;
         this.ordens.funcionario = this.pkF;
+        //get pk of funcionario
         // alert('user encontrado y enviado' + this.ordens.funcionario);
         this.RegisterOrdenS.SaveOrden(this.ordens).subscribe({
           next: (res) => alert('Registro con exito'),

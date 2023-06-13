@@ -39,10 +39,10 @@ export class TableAllBachesComponent implements OnInit {
   Ordenar() {
     this.router.navigate(['/Resgistraro']);
   }
-  /*seleccionarBache(bacheId: number) {
+  seleccionarBache(bacheId: number) {
     // get the pk of bache selected
     console.log('Bache seleccionado: ' + bacheId);
    this.RegisterOrdenS.bacheId = bacheId;
   }
-  */
+  
 }

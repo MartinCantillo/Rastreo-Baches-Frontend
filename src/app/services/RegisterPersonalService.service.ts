@@ -9,6 +9,7 @@ export class RegisterPersonalServiceService {
   private parametro: number = 0;
   private PersonalUrl: string = 'http://localhost:8023/user/personal';
   ordenId: number = 0;
+  funcionarioId: number = 0;
   constructor(private httpClient: HttpClient) {}
   generatePrimaryKey(): number {
     let key: number;
