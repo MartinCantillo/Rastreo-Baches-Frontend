@@ -60,7 +60,7 @@ export class TableBachesComponent implements OnInit {
       (userData) => {
         //Get the ciudadano
         this.ciudadano2 = userData;
-        this.RegisterAveriaS.codigoCiudadano = userData.idC;
+       
         //alert('Respuesta del servidor' + userData);
         this.getbachess();
       }

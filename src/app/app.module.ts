@@ -53,6 +53,7 @@ const appRoutes: Routes = [
     RegisterPersonalComponent,
     RegisterOrdenComponent,
     GetPersonalByOrdenComponent,
+    
   ],
   providers: [
     RciudadanoServicesService,

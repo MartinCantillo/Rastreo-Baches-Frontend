@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of bachessList" >
+      <tr *ngFor="let item of bachessList">
         <td>{{ item.idB }}</td>
         <td>{{ item.direccionB }}</td>
         <td>{{ item.distrito }}</td>
@@ -31,7 +31,13 @@
           >
             Ordenar
           </button>
-          <button type="button" class="btn btn-secondary">Archivo</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="RegisterAveriaSe.codigoBache = item.idB; GetAveria()"
+          >
+            Archivo
+          </button>
         </td>
       </tr>
     </tbody>

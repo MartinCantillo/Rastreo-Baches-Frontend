@@ -4,6 +4,7 @@ import { baches } from 'src/app/Models/Baches';
 import { ciudadano } from 'src/app/Models/Ciudadano';
 import { user } from 'src/app/Models/User';
 import { GetAllBachesServiceService } from 'src/app/services/GetAllBachesService.service';
+import { RegisterAveriaService } from 'src/app/services/RegisterAveria.service';
 import { RegisterOrdenServiceService } from 'src/app/services/RegisterOrdenService.service';
 
 @Component({
@@ -23,7 +24,8 @@ export class TableAllBachesComponent implements OnInit {
   constructor(
     private router: Router,
     private GetAllBachesSer: GetAllBachesServiceService,
-    public RegisterOrdenS: RegisterOrdenServiceService
+    public RegisterOrdenS: RegisterOrdenServiceService,
+    public RegisterAveriaSe: RegisterAveriaService
   ) {
     this.loadBaches();
   }
@@ -42,7 +44,10 @@ export class TableAllBachesComponent implements OnInit {
   seleccionarBache(bacheId: number) {
     // get the pk of bache selected
     console.log('Bache seleccionado: ' + bacheId);
-   this.RegisterOrdenS.bacheId = bacheId;
+    this.RegisterOrdenS.bacheId = bacheId;
+    this.RegisterAveriaSe.codigoBache = bacheId;
   }
-  
+  GetAveria() {
+    this.router.navigate(['/Registrara']);
+  }
 }

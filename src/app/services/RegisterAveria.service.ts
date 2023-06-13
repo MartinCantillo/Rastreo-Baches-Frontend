@@ -10,8 +10,9 @@ import { averia } from '../Models/Averia';
 export class RegisterAveriaService {
   private generatedKeys: number[] = [];
   private parametro: number = 0;
-  codigoCiudadano: number;
+  codigoFuncionario: number;
   codigoBache: number;
+  codigoUsuariofk: number;
   private SaveAveria: string = 'http://localhost:8023/user/averia';
 
   constructor(private httpClient: HttpClient) {}

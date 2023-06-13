@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { GetBachesService } from 'src/app/services/GetBaches.service';
 import { GetPkUserService } from 'src/app/services/GetPkUser.service';
+import { RegisterAveriaService } from 'src/app/services/RegisterAveria.service';
 import { RegisterBachesService } from 'src/app/services/RegisterBaches.service';
 import { RegisterFuncionarioServiceService } from 'src/app/services/RegisterFuncionarioService.service';
 import { RegisterOrdenServiceService } from 'src/app/services/RegisterOrdenService.service';
@@ -24,7 +25,8 @@ export class LogginComponent {
     private GetBachesServ: GetBachesService,
     private RegisterBachesSer: RegisterBachesService,
     private RegisterFuncionarioSer: RegisterFuncionarioServiceService,
-    private RegisterOrdenServiceSe :RegisterOrdenServiceService
+    private RegisterOrdenServiceSe: RegisterOrdenServiceService,
+    private RegisterAveriaS: RegisterAveriaService
   ) {}
 
   login() {
@@ -41,7 +43,8 @@ export class LogginComponent {
             if (this.password == res.password && res.rol.id === 1) {
               this.RegisterBachesSer.idCiudadno = res.id;
               this.RegisterFuncionarioSer.idUser = res.id;
-              this.RegisterOrdenServiceSe.usuarioId=res.id;
+              this.RegisterOrdenServiceSe.usuarioId = res.id;
+              this.RegisterAveriaS.codigoUsuariofk = res.id;
               this.router.navigate(['/GetBaches']);
             } else {
               alert('Por favor verifica');

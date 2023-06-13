@@ -61,5 +61,7 @@ export class RegisterOrdenComponent implements OnInit {
     );
     this.router.navigate(['/Resgistrarp']);
   }
-
+  Back() {
+    this.router.navigate(['/GetBaches']);
+  }
 }
