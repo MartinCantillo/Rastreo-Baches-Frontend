@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { funcionario } from 'src/app/Models/Funcionario';
 import { orden } from 'src/app/Models/Orden';
 import { user } from 'src/app/Models/User';
+import { GetPersonalByOrdenServiceService } from 'src/app/services/GetPersonalByOrdenService.service';
 import { RegisterOrdenServiceService } from 'src/app/services/RegisterOrdenService.service';
 import { RegisterPersonalServiceService } from 'src/app/services/RegisterPersonalService.service';
 
@@ -22,7 +23,8 @@ export class RegisterOrdenComponent implements OnInit {
   constructor(
     private router: Router,
     private RegisterOrdenS: RegisterOrdenServiceService,
-    private RegisterPersonalS: RegisterPersonalServiceService
+    private RegisterPersonalS: RegisterPersonalServiceService,
+    private GetPersonalByOrdenS: GetPersonalByOrdenServiceService
   ) {
     this.ordens.bache = this.RegisterOrdenS.bacheId;
   }
@@ -40,6 +42,8 @@ export class RegisterOrdenComponent implements OnInit {
     //pk of the  user as funcionario
     this.users.id = this.RegisterOrdenS.usuarioId;
     // alert('funcionario id enviado ' + this.users.id);
+    //set the pk of the orden to the service GetPersonal
+    this.GetPersonalByOrdenS.idOrden = this.ordens.idO;
     //get pk of the funcionario
     this.RegisterOrdenS.findByIdFuncionario(this.users).subscribe(
       (userData) => {
@@ -57,4 +61,5 @@ export class RegisterOrdenComponent implements OnInit {
     );
     this.router.navigate(['/Resgistrarp']);
   }
+
 }

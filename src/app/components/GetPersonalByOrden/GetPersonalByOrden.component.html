@@ -1,26 +1,25 @@
 <br />
 <meta charset="utf-8" />
 <div class="container">
-  <h1 class="custom-font">Baches registrados</h1>
+  <h1 class="custom-font">Personal registrado</h1>
   <table class="table">
     <thead class="table-dark">
       <tr>
         <th>Codigo</th>
+        <th>Cedula</th>
+        <th>Nombre</th>
         <th>Direccion</th>
-        <th>Distrito</th>
-        <th>Tamaño</th>
-        <th>Ubicacion</th>
-        <th>Urgencia</th>
+        <th>Telefono</th>
+        
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of bachessList">
-        <td>{{ item.idB }}</td>
-        <td>{{ item.direccionB }}</td>
-        <td>{{ item.distrito }}</td>
-        <td>{{ item.tamano }}</td>
-        <td>{{ item.ubicacionB }}</td>
-        <td>{{ item.urgencia }}</td>
+      <tr *ngFor="let item of personalList">
+        <td>{{ item.idp }}</td>
+        <td>{{ item.cedula }}</td>
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.direccion }}</td>
+        <td>{{ item.telefono }}</td>
         <!---  <td>
           <button
             type="button"

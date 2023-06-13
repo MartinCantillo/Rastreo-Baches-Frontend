@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { personal } from 'src/app/Models/Personal';
 import { RegisterPersonalServiceService } from 'src/app/services/RegisterPersonalService.service';
 
@@ -15,7 +16,8 @@ export class RegisterPersonalComponent implements OnInit {
   idp: number;
   orden: number;
   personal: personal = new personal();
-  constructor(private RegisterPersonalS: RegisterPersonalServiceService) {}
+  constructor(private router: Router,
+    private RegisterPersonalS: RegisterPersonalServiceService) {}
 
   ngOnInit() {}
 
@@ -39,5 +41,8 @@ export class RegisterPersonalComponent implements OnInit {
     this.nombre = '';
     this.direccion = '';
     this.telefono = '';
+  }
+  GetPersonal(){
+    this.router.navigate(['/GetPersonal']);
   }
 }

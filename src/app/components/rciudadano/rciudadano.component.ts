@@ -66,13 +66,13 @@ export class RCiudadanoComponent {
       this.ciudadanoS.SaveUser(this.ciudadano).subscribe({
         next: (res) => (
           console.log(res),
-          this.router.navigate(['/loggin']),
           alert('Registro con exito')
         ),
         error: (error) => {
           console.log(error);
         },
       });
+      this.router.navigate(['/loggin'])
     }
   }
 }
