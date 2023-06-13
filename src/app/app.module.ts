@@ -48,6 +48,7 @@ const appRoutes: Routes = [
     TableAllBachesComponent,
     RegisterPersonalComponent,
     RegisterOrdenComponent,
+    
   ],
   providers: [
     RciudadanoServicesService,
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
     RegisterFuncionarioServiceService,
     GetAllBachesServiceService,
     RegisterOrdenServiceService,
+    
   ],
   imports: [
     BrowserModule,

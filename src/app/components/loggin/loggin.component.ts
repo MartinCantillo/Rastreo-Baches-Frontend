@@ -4,6 +4,7 @@ import { GetBachesService } from 'src/app/services/GetBaches.service';
 import { GetPkUserService } from 'src/app/services/GetPkUser.service';
 import { RegisterBachesService } from 'src/app/services/RegisterBaches.service';
 import { RegisterFuncionarioServiceService } from 'src/app/services/RegisterFuncionarioService.service';
+import { RegisterOrdenServiceService } from 'src/app/services/RegisterOrdenService.service';
 import { LogginservicesService } from 'src/app/services/UserServices';
 @Component({
   selector: 'app-loggin',
@@ -22,7 +23,8 @@ export class LogginComponent {
     private GetPkUserServ: GetPkUserService,
     private GetBachesServ: GetBachesService,
     private RegisterBachesSer: RegisterBachesService,
-    private RegisterFuncionarioSer: RegisterFuncionarioServiceService
+    private RegisterFuncionarioSer: RegisterFuncionarioServiceService,
+    private RegisterOrdenServiceSe :RegisterOrdenServiceService
   ) {}
 
   login() {
@@ -39,6 +41,7 @@ export class LogginComponent {
             if (this.password == res.password && res.rol.id === 1) {
               this.RegisterBachesSer.idCiudadno = res.id;
               this.RegisterFuncionarioSer.idUser = res.id;
+              this.RegisterOrdenServiceSe.usuarioId=res.id;
               this.router.navigate(['/GetBaches']);
             } else {
               alert('Por favor verifica');

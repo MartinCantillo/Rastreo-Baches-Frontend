@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { orden } from '../Models/RegisterOrden';
+import { orden } from '../Models/Orden';
 import { Observable } from 'rxjs';
+import { funcionario } from '../Models/Funcionario';
+import { user } from '../Models/User';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +11,10 @@ import { Observable } from 'rxjs';
 export class RegisterOrdenServiceService {
   private generatedKeys: number[] = [];
   private parametro: number = 0;
-  Funcionarioid: number;
+  bacheId: number;
+  usuarioId: number;
   private OrdenUrl: string = 'http://localhost:8023/user/saveOrden';
+  private GetFUrl: string = 'http://localhost:8023/user/getpkfuncionario';
   constructor(private httpClient: HttpClient) {}
   generatePrimaryKey(): number {
     let key: number;
@@ -27,5 +31,8 @@ export class RegisterOrdenServiceService {
   }
   public SaveOrden(ordenes: orden): Observable<Object> {
     return this.httpClient.post(`${this.OrdenUrl}`, ordenes);
+  }
+  findByIdFuncionario(users: user): Observable<funcionario> {
+    return this.httpClient.post<funcionario>(this.GetFUrl, users);
   }
 }

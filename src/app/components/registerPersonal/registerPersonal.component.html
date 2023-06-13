@@ -1,32 +1,36 @@
 <div class="login">
-  <form class="custom-form" >
+  <form class="custom-form" (ngSubmit)="agregarPersonal()">
     <h1>Personal</h1>
     <input
       type="text"
       name="cedula"
       placeholder="Cedula"
       required
+      [(ngModel)]="cedula"
     />
     <input
       type="text"
       name="nombre"
       placeholder="Nombre"
       required
+      [(ngModel)]="nombre"
     />
     <input
-    type="text"
-    name="direccion"
-    placeholder="Direccion"
-    required
-  />
-  <input
-  type="text"
-  name="telefono"
-  placeholder="Telefono"
-  required
-/>
-    <button type="submit">Log in</button>
-    <br>
-    <button type="submit">Ver </button>
+      type="text"
+      name="direccion"
+      placeholder="Direccion"
+      required
+      [(ngModel)]="direccion"
+    />
+    <input
+      type="text"
+      name="telefono"
+      placeholder="Telefono"
+      required
+      [(ngModel)]="telefono"
+    />
+    <button type="submit">Registrar</button>
+    <br />
+    <!--<button type="button" (click)="verPersonal()">Ver</button>!---->
   </form>
 </div>

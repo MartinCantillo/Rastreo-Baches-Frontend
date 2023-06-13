@@ -4,6 +4,7 @@ import { baches } from 'src/app/Models/Baches';
 import { ciudadano } from 'src/app/Models/Ciudadano';
 import { user } from 'src/app/Models/User';
 import { GetAllBachesServiceService } from 'src/app/services/GetAllBachesService.service';
+import { RegisterOrdenServiceService } from 'src/app/services/RegisterOrdenService.service';
 
 @Component({
   selector: 'app-TableAllBaches',
@@ -21,18 +22,27 @@ export class TableAllBachesComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private GetAllBachesSer: GetAllBachesServiceService
+    private GetAllBachesSer: GetAllBachesServiceService,
+    public RegisterOrdenS: RegisterOrdenServiceService
   ) {
     this.loadBaches();
   }
- private loadBaches(){
-  this.GetAllBachesSer.findAllUsers().subscribe(
-    //Arrow function, funcion anónima similar a expersiones Lambda , aqui relleno el vector
-    (userData) => {
-      this.bachessList = userData;
-    }
-  );
- }
+  private loadBaches() {
+    this.GetAllBachesSer.findAllUsers().subscribe(
+      //Arrow function, funcion anónima similar a expersiones Lambda , aqui relleno el vector
+      (userData) => {
+        this.bachessList = userData;
+      }
+    );
+  }
   ngOnInit() {}
-  Ordenar() {}
+  Ordenar() {
+    this.router.navigate(['/Resgistraro']);
+  }
+  /*seleccionarBache(bacheId: number) {
+    // get the pk of bache selected
+    console.log('Bache seleccionado: ' + bacheId);
+   this.RegisterOrdenS.bacheId = bacheId;
+  }
+  */
 }

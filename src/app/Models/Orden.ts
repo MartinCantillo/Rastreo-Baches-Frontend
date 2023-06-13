@@ -1,7 +1,9 @@
 export class orden {
   idO: number;
   horas: number;
-  estado: string;
+  estados: string;
   materiales: string;
   precio: string;
+  funcionario:number;
+  bache:number;
 }
