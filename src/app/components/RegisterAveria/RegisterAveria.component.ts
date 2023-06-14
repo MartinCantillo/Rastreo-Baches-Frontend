@@ -26,17 +26,15 @@ export class RegisterAveriaComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(
-      'codigo de bache  desde averia' +this.RegisterAveriaS.codigoBache
-    );
+   // console.log('codigo de bache  desde averia' +this.RegisterAveriaS.codigoBache );
   }
 
   Enviar() {
     this.averia.tipoDano = this.tipoDeDano;
     this.averia.costo = this.costo;
     if (this.tipoDeDano != '' && this.costo != '') {
-      console.log('tipoDAno' + this.tipoDeDano);
-      console.log('costo' + this.costo);
+     // console.log('tipoDAno' + this.tipoDeDano);
+      //console.log('costo' + this.costo);
       this.user.id = this.RegisterAveriaS.codigoUsuariofk;
       this.averia.idA = this.RegisterAveriaS.generatePrimaryKey();
       this.averia.idA = this.RegisterAveriaS.getParametro();

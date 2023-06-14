@@ -41,7 +41,7 @@ export class RegisterLogginComponent implements OnInit {
       this.User.rol = 1;
       this.User.id=this.GeneratePk.getParametro();
 
-      alert(this.User);
+      //alert(this.User);
       this.LogginS.SaveUser(this.User).subscribe({
         next: (res) =>  this.router.navigate(['/Registrarc']),
         error: (error) => {
@@ -60,7 +60,7 @@ export class RegisterLogginComponent implements OnInit {
       this.User.password = this.password;
       this.User.rol = 2;
       this.User.id=this.GeneratePk.getParametro();
-      alert(this.User.username);
+   //   alert(this.User.username);
       this.LogginS.SaveUser(this.User).subscribe({
         next: (res) => this.router.navigate(['/Registrarc']),
         error: (error) => {

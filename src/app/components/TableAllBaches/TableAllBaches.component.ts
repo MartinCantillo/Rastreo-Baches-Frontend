@@ -43,7 +43,7 @@ export class TableAllBachesComponent implements OnInit {
   }
   seleccionarBache(bacheId: number) {
     // get the pk of bache selected
-    console.log('Bache seleccionado: ' + bacheId);
+   // console.log('Bache seleccionado: ' + bacheId);
     this.RegisterOrdenS.bacheId = bacheId;
     this.RegisterAveriaSe.codigoBache = bacheId;
   }

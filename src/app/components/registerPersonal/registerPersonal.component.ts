@@ -16,8 +16,10 @@ export class RegisterPersonalComponent implements OnInit {
   idp: number;
   orden: number;
   personal: personal = new personal();
-  constructor(private router: Router,
-    private RegisterPersonalS: RegisterPersonalServiceService) {}
+  constructor(
+    private router: Router,
+    private RegisterPersonalS: RegisterPersonalServiceService
+  ) {}
 
   ngOnInit() {}
 
@@ -27,9 +29,9 @@ export class RegisterPersonalComponent implements OnInit {
     this.personal.nombre = this.nombre;
     this.personal.idp = this.RegisterPersonalS.generatePrimaryKey();
     this.personal.idp = this.RegisterPersonalS.getParametro();
- this.personal.telefono=this.telefono;
+    this.personal.telefono = this.telefono;
     this.personal.orden = this.RegisterPersonalS.ordenId;
-    alert('orden enviada ' + this.personal.orden);
+    //  alert('orden enviada ' + this.personal.orden);
     this.RegisterPersonalS.SavePersonal(this.personal).subscribe({
       next: (res) => alert('Registro con exito'),
       error: (error) => {
@@ -42,7 +44,7 @@ export class RegisterPersonalComponent implements OnInit {
     this.direccion = '';
     this.telefono = '';
   }
-  GetPersonal(){
+  GetPersonal() {
     this.router.navigate(['/GetPersonal']);
   }
 }

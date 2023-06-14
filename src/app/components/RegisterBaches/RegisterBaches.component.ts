@@ -22,7 +22,7 @@ export class RegisterBachesComponent implements OnInit {
   ciudadanos: ciudadano = new ciudadano();
   ciudadano2: ciudadano = new ciudadano();
   user: user = new user();
-  email:string;
+  email: string;
   constructor(
     private RBaches: RegisterBachesService,
     private router: Router,
@@ -30,16 +30,13 @@ export class RegisterBachesComponent implements OnInit {
     private GeneratePkCiudadanoS: GeneratePkCiudadanoService,
     private GetBachesS: GetBachesService,
     private GetPkUserServ: GetPkUserService,
-    private GetPkCiudadanoS :GetPkCiudadanoService,
-    
-  ) {
-    
-  }
+    private GetPkCiudadanoS: GetPkCiudadanoService
+  ) {}
 
   ngOnInit() {
-    this.email=this.GetPkUserServ.username
-   
-  //alert("email desde el segundo "+this.email)
+    this.email = this.GetPkUserServ.username;
+
+    //alert("email desde el segundo "+this.email)
   }
   formData: any = {
     direccion: '',
@@ -49,7 +46,7 @@ export class RegisterBachesComponent implements OnInit {
     urgencia: '',
   };
   submitForm() {
-   /*  this.email = this.GetPkUserServ.username;
+    /*  this.email = this.GetPkUserServ.username;
     this.GetPkUserServ.getpkUser(this.email).subscribe((userData) => {
       this.user = userData;
       //get the pk of user
@@ -66,46 +63,43 @@ export class RegisterBachesComponent implements OnInit {
       this.formData.ubicacion === '' ||
       this.formData.distrito === '' ||
       this.formData.urgencia === ''
-    ) {alert('Por favor, complete todos los campos del formulario');
-    return; // Detener el envío del formulario si hay campos vacíos
-  }
- alert("ciudadano enviado  en getciudadanoyid"+this.RBaches.idCiudadno)
+    ) {
+      alert('Por favor, complete todos los campos del formulario');
+      return; // Detener el envío del formulario si hay campos vacíos
+    }
+    alert('ciudadano enviado  en getciudadanoyid' + this.RBaches.idCiudadno);
     //find the pk of the ciudadano
     this.GetBachesS.getCiudadanoByUserId(this.RBaches.idCiudadno).subscribe(
       (userData) => {
         //Get the ciudadano
         this.ciudadano2.idC = userData.idC;
-        this.baches.ciudadano=this.ciudadano2.idC;
-      // alert('Respuesta del servidor dentro de use data' + userData.nombreC);
-      this.baches.idB = this.GeneratePkBachesS.generatePrimaryKey();
-      this.baches.idB = this.GeneratePkBachesS.getParametro();
-      
-      this.baches.direccionB = this.formData.direccion;
-      this.baches.tamano = this.formData.tamano;
-      this.baches.ubicacionB = this.formData.ubicacion;
-      this.baches.distrito = this.formData.distrito;
-      this.baches.urgencia = this.formData.urgencia;
-      //this.baches.ciudadano = this.GeneratePkCiudadanoS.getParametro();
-      //creo primero el ciudadano solo con el id
-      this.ciudadanos.idC = this.baches.ciudadano;
-      //ahora incializo el servicio
-     
-     // alert("bache registrado con exito  this.GetBachesS.ciudadano +"+  this.baches.ciudadano )
-  
-      this.RBaches.SaveUser(this.baches).subscribe({
-        next: (res) => this.ir(),
-        error: (error) => {
-          console.log(error);
-        },
-      });
-      
-      },
-     
+        this.baches.ciudadano = this.ciudadano2.idC;
+        // alert('Respuesta del servidor dentro de use data' + userData.nombreC);
+        this.baches.idB = this.GeneratePkBachesS.generatePrimaryKey();
+        this.baches.idB = this.GeneratePkBachesS.getParametro();
+
+        this.baches.direccionB = this.formData.direccion;
+        this.baches.tamano = this.formData.tamano;
+        this.baches.ubicacionB = this.formData.ubicacion;
+        this.baches.distrito = this.formData.distrito;
+        this.baches.urgencia = this.formData.urgencia;
+        //this.baches.ciudadano = this.GeneratePkCiudadanoS.getParametro();
+        //creo primero el ciudadano solo con el id
+        this.ciudadanos.idC = this.baches.ciudadano;
+        //ahora incializo el servicio
+
+        // alert("bache registrado con exito  this.GetBachesS.ciudadano +"+  this.baches.ciudadano )
+
+        this.RBaches.SaveUser(this.baches).subscribe({
+          next: (res) => this.ir(),
+          error: (error) => {
+            console.log(error);
+          },
+        });
+      }
     );
-    
-   
   }
-  ir(){
+  ir() {
     this.navegar(this.email);
   }
   navegar(email: string) {
