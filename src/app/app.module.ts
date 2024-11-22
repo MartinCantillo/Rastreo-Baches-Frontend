@@ -27,6 +27,7 @@ import { RegisterPersonalServiceService } from './services/RegisterPersonalServi
 import { GetPersonalByOrdenComponent } from './components/GetPersonalByOrden/GetPersonalByOrden.component';
 import { GetPersonalByOrdenServiceService } from './services/GetPersonalByOrdenService.service';
 import { HomeComponent } from './components/Home/Home.component';
+import { GetPersonalComponentComponent } from './components/get-personal-component/get-personal-component.component';
 
 const appRoutes: Routes = [
   { path: 'loggin', component: LogginComponent },
@@ -38,9 +39,9 @@ const appRoutes: Routes = [
   { path: 'GetBaches', component: TableAllBachesComponent },
   { path: 'Resgistrarp', component: RegisterPersonalComponent },
   { path: 'Resgistraro', component: RegisterOrdenComponent },
-  { path: 'GetPersonal', component: HomeComponent },
+  { path: 'GetPersonal', component: GetPersonalComponentComponent },
   { path: 'home', component: HomeComponent },
-  { path: '**', redirectTo: '/home' } 
+  { path: '**', redirectTo: '/home' }
 ];
 
 @NgModule({
@@ -56,6 +57,7 @@ const appRoutes: Routes = [
     RegisterPersonalComponent,
     RegisterOrdenComponent,
     GetPersonalByOrdenComponent,
+    GetPersonalComponentComponent,
   ],
   providers: [
     RciudadanoServicesService,

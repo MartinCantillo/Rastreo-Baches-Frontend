@@ -36,7 +36,7 @@ export class RCiudadanoComponent {
   ) {}
   submitForm() {
     if (this.formData.tipoRegistro === '1') {
-      alert('Funcionario');
+    //  alert('Funcionario');
       this.funcionario.user = this.GeneratePk.getParametro();
       this.funcionario.cedulaF = this.formData.cedula;
       this.funcionario.nombreF = this.formData.nombre;
@@ -54,7 +54,7 @@ export class RCiudadanoComponent {
         },
       });
     } else if (this.formData.tipoRegistro === '2') {
-      alert('Ciudadano');
+     // alert('Ciudadano');
       this.GeneratePkCiudadanoS.generatePrimaryKey();
       this.ciudadano.idC = this.GeneratePkCiudadanoS.getParametro();
       this.ciudadano.user = this.GeneratePk.getParametro();

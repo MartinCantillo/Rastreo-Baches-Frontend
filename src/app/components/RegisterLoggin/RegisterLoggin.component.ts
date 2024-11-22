@@ -34,7 +34,7 @@ export class RegisterLogginComponent implements OnInit {
   login() {
     if (this.isAdmin && this.email !== '' && this.password !== '') {
       // Inicio de sesión como funcionario
-      alert('Inicio de sesión como funcionoario');
+     // alert('Inicio de sesión como funcionoario');
       this.User.id = this.GeneratePk.generatePrimaryKey();
       this.User.username = this.email;
       this.User.password = this.password;
@@ -49,12 +49,12 @@ export class RegisterLogginComponent implements OnInit {
           alert('Error'+error);
         },
       });
-     
-    
+
+
       //this.router.navigate(['/Registrarc']);
     } else if (this.isCiudadano && this.email !== '' && this.password !== '') {
       // Inicio de sesión como ciudadano
-      alert('Inicio de sesión como ciudadano');
+     // alert('Inicio de sesión como ciudadano');
       this.User.id = this.GeneratePk.generatePrimaryKey();
       this.User.username = this.email;
       this.User.password = this.password;
@@ -68,8 +68,8 @@ export class RegisterLogginComponent implements OnInit {
           alert('Error'+error);
         },
       });
-    
-      
+
+
     } else {
       alert('Por favor, verifique los datos ingresados');
     }

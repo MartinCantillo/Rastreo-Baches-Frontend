@@ -1,0 +1,35 @@
+<br />
+<meta charset="utf-8" />
+<div class="container">
+  <h1 class="custom-font">Personal registrados</h1>
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th>Cedula</th>
+        <th>Codigo orden</th>
+        <th>Estado</th>
+        <th>Codigo </th>
+        <th>Direccion</th>
+        <th>Nombre</th>
+        <th>Telefono</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of personals">
+
+        <td>{{ item.cedula }}</td>
+        <td>{{ item.orden.idO }}</td>
+        <td>{{item.orden.estados}}</td>
+        <td>{{ item.idp }}</td>
+        <td>{{ item.direccion }}</td>
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.telefono }}</td>
+
+
+
+      </tr>
+    </tbody>
+  </table>
+  <br />
+</div>

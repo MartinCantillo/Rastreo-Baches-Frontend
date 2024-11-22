@@ -31,7 +31,7 @@ export class LogginComponent {
 
   login() {
     if (this.isAdmin && this.email !== '' && this.password !== '') {
-      alert('Inicio de sesión como Funcionario');
+      //alert('Inicio de sesión como Funcionario');
       this.GetBachesServ.user.username = this.email;
       this.GetPkUserServ.username = this.email;
 
@@ -63,7 +63,7 @@ export class LogginComponent {
 
       this.GetPkUserServ.username = this.email;
       //this.GetBachesServ.user.username = this.email;
-      alert('Inicio de sesión como ciudadano ');
+     
       //hago a consulta para obtener el pk de user
       // alert('usuario enviado ' + this.email);
 
