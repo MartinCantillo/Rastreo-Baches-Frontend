@@ -35,6 +35,8 @@ export class RCiudadanoComponent {
     private GeneratePkCiudadanoS: GeneratePkCiudadanoService
   ) {}
   submitForm() {
+
+ 
     if (this.formData.tipoRegistro === '1') {
     //  alert('Funcionario');
       this.funcionario.user = this.GeneratePk.getParametro();

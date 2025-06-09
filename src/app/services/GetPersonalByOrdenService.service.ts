@@ -9,7 +9,7 @@ import { personal2 } from '../Models/Personal2';
 export class GetPersonalByOrdenServiceService {
     idOrden:number;
   private apiUrl: string = 'http://localhost:8023/user/GetPersonalByOrden';
-  private apiUrl2: string = 'http://localhost:8023/user/getAllP';
+  private apiUrl2: string = 'http://localhost:8023/user/GetAllPersonal';
 
   constructor(private httpClient: HttpClient) {}
 

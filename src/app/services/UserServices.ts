@@ -11,7 +11,7 @@ export class LogginservicesService {
   constructor(private httpClient: HttpClient) {}
 
   public SaveUser(user: user): Observable<Object> {
-    alert('Entro al servicio');
+   
     return this.httpClient.post(this.SaveCiudadano, user);
   }
 }

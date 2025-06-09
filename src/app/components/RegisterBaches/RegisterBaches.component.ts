@@ -67,7 +67,7 @@ export class RegisterBachesComponent implements OnInit {
       alert('Por favor, complete todos los campos del formulario');
       return; // Detener el envío del formulario si hay campos vacíos
     }
-    alert('ciudadano enviado  en getciudadanoyid' + this.RBaches.idCiudadno);
+   // alert('ciudadano enviado  en getciudadanoyid' + this.RBaches.idCiudadno);
     //find the pk of the ciudadano
     this.GetBachesS.getCiudadanoByUserId(this.RBaches.idCiudadno).subscribe(
       (userData) => {
